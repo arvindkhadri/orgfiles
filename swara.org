@@ -1,0 +1,154 @@
+#+AUTHOR: zoso@debian
+Tasks in swara
+* 2014-02-10 Mon
+** DONE Build a way to test keypress recognition in the playback menu.
+   CLOSED: [2014-02-17 Mon 13:12]
+ After the user has disconnected the call, send an sms notifying him of the
+times he pressed the key.
+
+*** :task: Detect keypress 8 and increment counter.
+**** :debug: Debug code to understand the control flow.
+**** :debug:info: Attach event handler to key 8 in playBack()
+Do the needful in the event handler.
+**** :docs: Event handlers for key press determine which
+function gets called when the user presses a key.  An event handler function
+should accept a python list object and a timer object, if the handler wants to
+return the control flow to the menu it was called from. If the handler does not
+accept the pre-defined parameters, the handler has to define a new menu.
+
+**** :code: Implement a handler as per the defined spec in :docs:
+countKeyPress is the event handler defined for key press of 8 in playback
+menu. The handler accepts 3 parameters, key, call_id and the timer object. The
+handler makes use of an API, recordKeyPress , in the database to increment the
+counter.
+
+*** :task: Detect hangup.
+**** :debug:info: Attach a signal handler for SIGHUP signal.
+**** :code: Implement a signal handler.
+The handler checks if the call in progress is in the keyPress table, if yes then
+then send a sms to the user and then delete the entry from the table.
+
+*** :task: Send SMS.
+**** :info: SMS country is a bulk SMS service provider.
+They also provide web APIs to send SMS.
+**** :code: Make a get request to the url specified by the
+service provider with the required parameters.
+
+** DONE Submit the following documents to SMS country
+   CLOSED: [2014-02-17 Mon 13:12]
+*** Letter to TRAI, requesting permission to send transactional SMS.
+*** Company registration certificate.
+*** Templates of the messages.
+
+** Call support
+*** Assist over phone to debug why calls are not being returned from a specific modem.
+
+
+
+** Fix issue with report generation script
+*** :debug: Reports were not being generated because there were new modems
+configured and they were not added to the script for generating report.
+*** :code: Add missing modems to the script.
+*** TODO :code: Refactor the script to provide output as json.
+
+
+* 2014-02-17 Mon
+** DONE Debugging why calls are not going out from modem 33 to 37
+   CLOSED: [2014-02-24 Mon 18:42]
+***  :task:     Take out SIM and put it on another phone, make a out going call.
+     CLOCK: [2014-02-17 Mon 12:15]--[2014-02-17 Mon 13:10] =>  0:55
+***  :info: All outgoing calls have been barred temporarily.
+     This needs follow up.
+
+
+** DONE Setup '2n' modem to accept incoming calls
+   SCHEDULED: <2014-02-24 Mon> CLOSED: [2014-02-24 Mon 18:42]
+   CLOCK: [2014-02-18 Tue 11:31]--[2014-02-18 Tue 18:31] =>  7:00
+
+
+
+
+
+* 2014-02-24 Mon
+** TODO Test key press on Reliance and TATA Docomo with Bhagirath
+*** :task: Generate manual callbacks to Bhagirath's number
+and test key press on both connections.
+
+** TODO Enable commenting on cgnetswara.org
+***  Enable users to add and see comments on the permalink of the post. :task:
+**** A sweet maker and swagger to provision commenting on the post.
+     CLOCK: [2014-02-27 Thu 18:48]--[2014-02-27 Thu 19:35] =>  0:47
+     CLOCK: [2014-02-27 Thu 17:13]--[2014-02-27 Thu 18:41] =>  1:28
+
+*** Enable spam protection. Site has faced onslaught of spam comments. :task:
+Use math CAPTCHA, perhaps.
+
+** TODO Check style issues with the website.
+*** DONE On the right hand side panel of the website, attribution to Environics
+    CLOSED: [2014-02-27 Thu 15:16]
+Trust flows over two lines. :task:fix:
+**** Add <br> after "Supported by" text.
+    CLOCK: [2014-02-27 Thu 14:19]--[2014-02-27 Thu 14:32] =>  0:13
+**** "Supported by" was closer to search bar. Add a break before <h2>
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+     Clock summary at [2014-02-27 Thu 15:15]
+
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:16* |
+|--------------+--------|
+#+END:
+
+*** Gondi reports on the top panel needs some style fixes.
+**** Remove the line beneath "Gondi Reports" and "Recent reports"
+***** In master.css comment out border styles for #primary ul.
+     CLOCK: [2014-02-27 Thu 15:17]--[2014-02-27 Thu 15:24] =>  0:07
+     #+BEGIN: clocktable :maxlevel 2 :scope subtree
+     Clock summary at [2014-02-27 Thu 15:25]
+
+     | Headline     | Time   |
+     |--------------+--------|
+     | *Total time* | *0:07* |
+     |--------------+--------|
+     #+END:
+
+** TODO Analytics.
+*** :task: Use D3 to visualize various pre-defined and user generated queries.
+E.g A visualiztion showing how many calls have failed on a particular modem.
+*** :task:refactor:code: Use the present report.py script to generate json.
+*** :task:refactor:code: Load the IP address of the modems from a conf file.
+
+** TODO Extending tests.
+*** :task: Make keys 7 and 9 behave the same as 1 and 2.
+*** :more: Messages recorded from the testing menu are not stored along
+with posts from the main menu.
+
+** DONE Adding new SIM cards to callback loop.
+   CLOSED: [2014-02-24 Mon 18:47]
+*** Bring down matrix modems and add SIMs to topex and 2N modem.
+    Add modems to callback loop.
+    CLOCK: [2014-02-24 Mon 12:00]--[2014-02-24 Thu 13:00] =>  1:00
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+Clock summary at [2014-02-27 Thu 14:53]
+
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *1:00* |
+|--------------+--------|
+#+END:
+
+
+*** Add the IP address to SwaraCallback.java. Restart the required process.
+    CLOCK: [2014-02-24 Mon 13:00]--[2014-02-24 Mon 13:20] =>  0:20
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+Clock summary at [2014-02-27 Thu 14:54]
+    | Headline     | Time   |
+    |--------------+--------|
+    | *Total time* | *0:20* |
+    |--------------+--------|
+#+END:
+
+
+** TODO Try using a landline connection with Swara.
+*** Plugin a phone line to a modem(Dialup card) and process calls from that number.
+*** Test if key press is consistent on the landline.
