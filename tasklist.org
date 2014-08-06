@@ -159,23 +159,26 @@ form adds the desired functionality, but the search box's style screws up.
 
 * <2014-08-06 Wed>
 #+BEGIN: clocktable :maxlevel 2 :scope subtree
-#+CAPTION: Clock summary at [2014-08-06 Wed 18:01]
-| Headline         | Time   |      |
-|------------------+--------+------|
-| *Total time*     | *2:30* |      |
-|------------------+--------+------|
-| <2014-08-06 Wed> | 2:30   |      |
-| \__ Miscellanous |        | 2:30 |
+#+CAPTION: Clock summary at [2014-08-06 Wed 19:44]
+| Headline                                  | Time   |      |
+|-------------------------------------------+--------+------|
+| *Total time*                              | *4:44* |      |
+|-------------------------------------------+--------+------|
+| <2014-08-06 Wed>                          | 4:44   |      |
+| \__ Content objects need to have their... |        | 2:14 |
+| \__ Miscellanous                          |        | 2:30 |
 #+END:
+
+** Content objects need to have their own id.
+   CLOCK: [2014-08-06 Wed 16:05]--[2014-08-06 Wed 18:19] =>  2:14
+   - Refactor client side code to integrate feature.
+   - Debug more and understand code flow better.
 
 ** Miscellanous
    CLOCK: [2014-08-06 Wed 11:00]--[2014-08-06 Wed 13:30] =>  2:30
 
 *** Reading articles on HN
 *** IRC
+*** Updating document.
+*** Reading about org-mode.
 *** e-mail
-
-** Content objects need to have their own id.
-   CLOCK: [2014-08-06 Wed 18:05]--[2014-08-06 Wed 18:19] =>  0:14
-   - Refactor client side code to integrate feature.
-   -
