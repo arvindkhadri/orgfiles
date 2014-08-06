@@ -1,0 +1,181 @@
+#+TITLE: What did I do today?
+#+OPTIONS: toc:3
+#+TOC: listings
+#+AUTHOR: Arvind Khadri
+#+EMAIL: arvind@servelots.com
+#+INFOJS_OPT: view:overview toc:t path:org-info.js mouse:underline
+#+KEYWORDS: Tasklist, log, document, servelots, mouchak, alipi, pensieve
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.cs" />
+* <2014-08-04 Mon>
+** Adding hyper links to displayed search results on climatesouthasia website
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+#+CAPTION: Clock summary at [2014-08-05 Tue 20:16]
+| Headline                               | Time   |      |
+|----------------------------------------+--------+------|
+| *Total time*                           | *0:10* |      |
+|----------------------------------------+--------+------|
+| \__ Adding hyper links to displayed... |        | 0:10 |
+#+END:
+
+*** Editing code
+   CLOCK: [2014-08-04 Mon 12:35]--[2014-08-04 Mon 12:41] =>  0:06
+*** Testing changes
+    CLOCK: [2014-08-04 Mon 12:41]--[2014-08-04 Mon 12:45] =>  0:04
+
+** Phone call from Anon, discussion about work
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+#+CAPTION: Clock summary at [2014-08-05 Tue 20:17]
+| Headline                                | Time   |      |
+|-----------------------------------------+--------+------|
+| *Total time*                            | *0:30* |      |
+|-----------------------------------------+--------+------|
+| \__ Phone call from Anon, discussion... |        | 0:30 |
+#+END:
+
+*** Notes from call
+**** Feedback on pensieve, structuring of public facing service.
+**** Prioritzing work on Mouchak, look up ::p1:: bugs on asana, and squish them.
+**** Restructuring alipi can be done using an iframe. The iframe will load the
+     requested webpage with minimal js required. Outside the iframe are the CSS and
+     JS components of alipi, this avoids CSS and JS namespace clashes.
+*** Discussion about other projects.
+    CLOCK: [2014-08-04 Mon 13:04]--[2014-08-04 Mon 13:34] =>  0:30
+
+** Fixing UI issues of search on climatesouthasia
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+#+CAPTION: Clock summary at [2014-08-05 Tue 20:19]
+| Headline                             | Time   |      |
+|--------------------------------------+--------+------|
+| *Total time*                         | *1:17* |      |
+|--------------------------------------+--------+------|
+| \__ Fixing UI issues of search on... |        | 1:17 |
+#+END:
+
+*** Displaying a message when no results are found.
+**** Edit code, check if the returned object has content in 'hits' key,
+     if the key is empty then no results were found for the query.
+     CLOCK: [2014-08-04 Mon 17:25]--[2014-08-04 Mon 17:38] =>  0:13
+
+**** Test the changes.
+     CLOCK: [2014-08-04 Mon 17:39]--[2014-08-04 Mon 17:45] =>  0:06
+
+**** Fixing a bug in the implementation. Alert div was always being shown,
+     hiding it by default.
+     CLOCK: [2014-08-04 Mon 17:46]--[2014-08-04 Mon 17:49] =>  0:03
+
+*** Change the heading of search page, make the UI more informative
+     CLOCK: [2014-08-04 Mon 17:50]--[2014-08-04 Mon 18:10] =>  0:20
+
+
+*** Pressing enter key in the search box should work
+**** Edited HTML of search box. Adding search box inside a
+form adds the desired functionality, but the search box's style screws up.
+    CLOCK: [2014-08-04 Mon 18:12]--[2014-08-04 Mon 18:26] =>  0:14
+**** Debug the issue with style and fix it.
+     CLOCK: [2014-08-04 Mon 19:36]--[2014-08-04 Mon 19:56] =>  0:20
+**** Test the fix and deploying it on server.
+     CLOCK: [2014-08-04 Mon 19:58]--[2014-08-04 Mon 19:59] =>  0:01
+
+** Miscellanous
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+#+CAPTION: Clock summary at [2014-08-05 Tue 20:19]
+| Headline         | Time   |      |
+|------------------+--------+------|
+| *Total time*     | *1:00* |      |
+|------------------+--------+------|
+| \__ Miscellanous |        | 1:00 |
+#+END:
+
+  CLOCK: [2014-08-04 Mon 14:45]--[2014-08-04 Mon 15:45] =>  1:00
+
+*** Responding to mails.
+*** Editing this document.
+*** Discuss tasks/feedback over IRC.
+*** Fixing issues with alipi.
+*** Debugging the update button issue in Mouchak.
+
+
+* <2014-08-05 Tue>
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+#+CAPTION: Clock summary at [2014-08-05 Tue 20:26]
+| Headline                                 | Time   |      |
+|------------------------------------------+--------+------|
+| *Total time*                             | *3:58* |      |
+|------------------------------------------+--------+------|
+| <2014-08-05 Tue>                         | 3:58   |      |
+| \__ DONE Alipi's fixes done yesterday... |        | 1:01 |
+| \__ DONE Debug update button issue.      |        | 1:01 |
+| \__ Miscellanous                         |        | 1:31 |
+| \__ Debugging...                         |        | 0:25 |
+#+END:
+
+** DONE Alipi's fixes done yesterday have an issue. Roll back to a previous version on production.
+   CLOSED: [2014-08-05 Tue 14:04]
+   CLOCK: [2014-08-05 Tue 12:36]--[2014-08-05 Tue 12:55] =>  0:19
+   Debug the issue and submit a patch to rectify the problem.
+   CLOCK: [2014-08-05 Tue 12:10]--[2014-08-05 Tue 12:36] =>  0:26
+   Refactor the login code. Login button was hidden if a cookie with the username was present.
+   This implementation was buggy. Now there is a API which checks if the session
+   object has username, then returns a response of the format {"username":
+   <username>}, else returns {"status": "User not logged in"}
+
+*** Push the changes and make the changes live. Test on production.
+    CLOCK: [2014-08-05 Tue 13:58]--[2014-08-05 Tue 14:04] =>  0:06
+    CLOCK: [2014-08-05 Tue 12:56]--[2014-08-05 Tue 13:06] =>  0:10
+
+** DONE Debug update button issue.
+   CLOSED: [2014-08-05 Tue 17:01]
+   CLOCK: [2014-08-05 Tue 16:20]--[2014-08-05 Tue 16:32] =>  0:12
+   CLOCK: [2014-08-05 Tue 14:37]--[2014-08-05 Tue 15:08] =>  0:31
+*** Notes from debugging
+    - #page is removed from the DOM, while there is a view attached to
+      it. Hence the update fails, as the view's event handlers are not fired.
+    - This can be fixed by calling .delegateEvents() after the .remove() call,
+      so that the view's event handlers get re-assigned.
+*** Fixing the bug in code and testing changes.
+    CLOCK: [2014-08-05 Tue 16:50]--[2014-08-05 Tue 17:01] =>  0:11
+    CLOCK: [2014-08-05 Tue 16:33]--[2014-08-05 Tue 16:40] =>  0:07
+
+** Miscellanous
+   CLOCK: [2014-08-05 Tue 20:15]--[2014-08-05 Tue 20:26] =>  0:11
+   CLOCK: [2014-08-05 Tue 19:22]--[2014-08-05 Tue 19:45] =>  0:23
+   CLOCK: [2014-08-05 Tue 17:44]--[2014-08-05 Tue 18:41] =>  0:57
+
+
+*** Reading articles on HN
+*** Responding to email
+*** IRC
+*** General discussion about work with Dinesh.
+*** Updating document and restructing the document.
+
+** Debugging https://app.asana.com/0/7608419598081/8035266071184
+   CLOCK: [2014-08-05 Tue 19:48]--[2014-08-05 Tue 20:13] =>  0:25
+
+*** Notes
+    - Content and pages must have separate id. A content object becomes an
+      embedded object into a page. A page has list of content id which belong
+      to the page.
+    - Refactor server component's code to use classes.
+
+* <2014-08-06 Wed>
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+#+CAPTION: Clock summary at [2014-08-06 Wed 18:01]
+| Headline         | Time   |      |
+|------------------+--------+------|
+| *Total time*     | *2:30* |      |
+|------------------+--------+------|
+| <2014-08-06 Wed> | 2:30   |      |
+| \__ Miscellanous |        | 2:30 |
+#+END:
+
+** Miscellanous
+   CLOCK: [2014-08-06 Wed 11:00]--[2014-08-06 Wed 13:30] =>  2:30
+
+*** Reading articles on HN
+*** IRC
+*** e-mail
+
+** Content objects need to have their own id.
+   CLOCK: [2014-08-06 Wed 18:05]--[2014-08-06 Wed 18:19] =>  0:14
+   - Refactor client side code to integrate feature.
+   -
